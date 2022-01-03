@@ -27,15 +27,6 @@ describe('Core controller unit tests:', function() {
         });
     });
 
-    describe('Loading map', function() {
-        it('If logged in create map page', function(done) {
-            request
-                .get('/map')
-                .expect('Content-Type', 'text/html; charset=utf-8')
-                .expect(200, done);
-        });
-    });
-
     after(function(done) {
         done();
     });
