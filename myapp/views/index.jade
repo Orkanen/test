@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  body.d-flex.h-100.text-center.text-white.bg-dark
+    div.cover-container.d-flex.w-100.h-100.p-3.mx-auto.flex-column
+      header.mb-auto
+        div
+          img.scooter(src= '/images/scooter.svg')
+          nav.nav.nav-masthead.justify-content-center.float-md-end
+      main.form-signin
+        form(method="POST", action="/")
+          img.mb-4(src="")
+          h1.h3.mb-3.fw-normal  Sign in
+          div.form-floating
+            input.form-control#floatingInput.form-format-top(type="email" name="username" placeholder="name@example.com")
+            label(for="floatingInput") Email address
+          div.form-floating
+            input.form-control#floatingPassword.form-format-bottom(type="password" name="password" placeholder="Password")
+            label(for="floatingPassword") Password
+          div.checkbox.mb-3
+            a(href="/register" value="remember-me") Register
+          button.w-100.btn.btn-lg.btn-primary(type="submit") Sign in
+          p.mt-5.mb-3.text-muted © 2017–2021
+        footer.mt-auto.text-white-50
+          p Cover template for test.
+
+        script.
+          checkMessage(!{JSON.stringify(msg)});
+          //setInterval(_testRunner, 60000);

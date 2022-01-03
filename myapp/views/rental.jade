@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  body.d-flex.h-100.text-center.text-white.bg-dark
+    div.cover-container.d-flex.w-100.h-100.p-3.mx-auto.flex-column.mapflow
+      header.mb-auto
+        img.scooter(src= '/images/scooter.svg')
+        nav.nav.nav-masthead.justify-content-center.float-md-end
+      p.lead
+        div
+          div#map.map
+            script.
+              timer();
+              crtMap2(#{bCrd}, !{JSON.stringify(dataPack)}, #{bId}, #{cId}, !{JSON.stringify(tkn)});
+      form(method="POST", action="/rental")
+        h1.bikeId= bId
+        input.bikeId(type="hidden", name='bikeId', value=bId)
+        h1.bikeCoords= bCrd
+        h1.crtEmail= usr
+        button#rentBtn.btn-added-red.w-100.btn.btn-lg.btn-primary(type="submit") Return
+      footer.mt-auto.text-white-50
+        p Cover template for test.

@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  body.d-flex.h-100.text-center.text-white.bg-dark
+    div.cover-container.d-flex.w-100.h-100.p-3.mx-auto.flex-column.mapflow
+      header.mb-auto
+        img.scooter(src= '/images/scooter.svg')
+        nav.nav.nav-masthead.justify-content-center.float-md-end
+      div
+        div#map.map
+          script.
+              //map(#{bikeCoords});
+              //getLocation();
+              crtMap(!{JSON.stringify(dataPack)});
+      form(method="POST", action="/map")
+        //h1#bike_Img(name='bike_Img')= bikeImg
+
+        h1.bike_Id(name='bike_Id')= bikeId
+        input.bikeId(type="hidden", name='bikeId', value=bikeId)= bikeId
+        h1.bike_Desc(name='bike_Desc')= bikeDesc
+        input.bikeDesc(type="hidden", name='bikeDesc', value=bikeDesc)
+        h1.bike_Battery(name='bike_Battery')= bikeBattery
+        input.bikeBattery(type="hidden", name='bikeBattery', value=bikeBattery)
+        input.bikeCoords(type="hidden", name='bikeCoords', value=bikeCoords)
+
+        button#rentBtn.btn-added-red.w-100.btn.btn-lg.btn-primary(type="submit", onclick="rent()", hidden="hidden") Rent
+      footer.mt-auto.text-white-50
