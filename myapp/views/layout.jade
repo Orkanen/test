@@ -5,13 +5,16 @@ html(lang="sv_SE").h-100
     meta(name='viewport', content='width=device-width, initial-scale=1', charset='utf-8')
     link(rel='stylesheet', href='/css/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
+
+    link(rel="stylesheet" href="/leaf/leaflet.css")
+    script(src="/leaf/leaflet.js")
+
+    link(rel='stylesheet', href='/clstr/MarkerCluster.css')
+    script(src='/clstr/leaflet.markercluster.js')
+
     script(src='javascripts/map.js')
     script(src='javascripts/errors.js')
 
-    link(rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css")
-    script(src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js")
-    link(rel='stylesheet', href='/clstr/MarkerCluster.css')
-    script(src='/clstr/leaflet.markercluster.js')
 
     script(src='/js/bootstrap.min.js')
   body
