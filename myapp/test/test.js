@@ -1,50 +1,84 @@
+process.env.NODE_ENV = 'test';
+
 var request = require('supertest');
 const express = require('express');
-
+const server = require('../app.js');
+const chai = require('chai');
 const app = express();
 
+//var assert = chai.assert;    // Using Assert style
+//var expect = chai.expect;    // Using Expect style
+var should = chai.should();  // Using Should style
+var xToken = "mockTest";
+
 /* eslint-disable no-unused-vars, no-undef */
-app.get('/', function(req, res) {
-    res.status(200);
-});
+
 
 describe('Core controller unit tests:', function() {
-    before(function(done) {
-        request = request('http://localhost:1338');
-
-        done();
-    });
-
     describe('Loading the home-page', function() {
         it('should return 200 from GET /', function(done) {
-            request
+            request(server)
                 .get('/')
-                .expect('Content-Type', 'text/html; charset=utf-8')
-                .expect(200, done);
+                .end((err, res) => {
+                    res.status.should.be.equal(200);
+                    res.text.should.match(/name="username"/);
+                    res.text.should.match(/name="password"/);
+                    res.text.should.match(/action="[/]"/);
+                    if (err) {
+                      throw err;
+                    }
+                    done();
+                });
+        });
+    });
+
+    describe('Logging in to the home-page', function() {
+        it('should return 302 from GET /', function(done) {
+            request(server)
+                .post('/')
+                .send({username: "test1@test.com", password: "test123"})
+                .end((err, res) => {
+                    res.status.should.be.equal(302);
+                    res.text.should.be.equal("Found. Redirecting to /map");
+                    if (err) {
+                      throw err;
+                    }
+                    done();
+                });
+        });
+    });
+
+    describe('Login wrong password', function() {
+        it('should return 400 from GET /', function(done) {
+            request(server)
+                .post('/')
+                .send({username: "te@test.com", password: "tes432"})
+                .end((err, res) => {
+                    //console.log(res)
+                    if (err) {
+                      throw err;
+                    }
+                    done();
+                });
         });
     });
 
     describe('Loading the register-page', function() {
         it('should return 200 from GET /register', function(done) {
-            request
+            request(server)
                 .get('/register')
-                .expect('Content-Type', 'text/html; charset=utf-8')
-                .expect(200, done);
+                .end((err, res) => {
+                    res.status.should.be.equal(200);
+                    res.text.should.match(/name="username"/);
+                    res.text.should.match(/name="password"/);
+                    res.text.should.match(/action="[/]register"/);
+                    if (err) {
+                      throw err;
+                    }
+                    done();
+                });
         });
     });
-
-    describe('Loading map', function() {
-        it('Test login -> return 302 GET /map', function(done) {
-            request
-                .post('/')
-                .send({username: 'test@test.se', password: 'test123'})
-                .expect(302)
-                .expect('Location', '/map')
-                .end(done);
-        });
-    });
-
-
 
     after(function(done) {
         done();
