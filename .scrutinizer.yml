@@ -12,7 +12,3 @@ build:
               # These formats are supported:
               # clover, cobertura, jacoco, python-cc, ruby-cc, go-cc, lcov
               format: clover
-
-filter:
-    excluded_paths:
-        - node_modules/*
