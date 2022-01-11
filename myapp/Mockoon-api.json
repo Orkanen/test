@@ -1,0 +1,165 @@
+{
+    "source": "mockoon:1.17.0",
+    "data": [
+        {
+            "type": "environment",
+            "item": {
+                "uuid": "0e60276b-4eb4-4df3-bb84-b82b15b3b896",
+                "lastMigration": 19,
+                "name": "Grupp7",
+                "endpointPrefix": "",
+                "latency": 0,
+                "port": 1337,
+                "hostname": "0.0.0.0",
+                "routes": [
+                    {
+                        "uuid": "65d7dff5-bfeb-45b8-b725-09d1080532de",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "v1/auth/customer/1",
+                        "responses": [
+                            {
+                                "uuid": "05d535e6-c74e-4f04-a630-1462a4d6c76d",
+                                "body": "{\n  \"data\":{\n      \"userid\": 1,\n      \"firstname\": \"Test\",\n      \"lastname\": \"Testsson\",\n      \"email\": \"test1@test.com\",\n      \"cityid\": \"2\"\n  }\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false,
+                                "fallbackTo404": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "0178ecc7-4a6d-4884-bbae-77292bd631c9",
+                        "documentation": "",
+                        "method": "post",
+                        "endpoint": "v1/auth/customer/login",
+                        "responses": [
+                            {
+                                "uuid": "adf7d705-056c-4312-ab22-1cc4e1ea1c7f",
+                                "body": "{\n  \"data\":{\n      \"id\": 1,\n      \"firstname\": \"Test\",\n      \"lastname\": \"Testsson\",\n      \"email\": \"test1@test.com\",\n      \"cityid\": \"2\",\n      \"token\": \"mockTest\"\n  }\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "body",
+                                        "modifier": "email",
+                                        "value": "test1@test.com",
+                                        "operator": "equals"
+                                    },
+                                    {
+                                        "target": "body",
+                                        "modifier": "password",
+                                        "value": "test123",
+                                        "operator": "equals"
+                                    }
+                                ],
+                                "rulesOperator": "AND",
+                                "disableTemplating": false,
+                                "fallbackTo404": false
+                            },
+                            {
+                                "uuid": "b438ae6a-39d1-4ae7-94f6-9712477f2089",
+                                "body": "{\n    \"errors\": {\n        \"status\": 401,\n        \"source\": \"/v1/auth/customer/login\",\n        \"title\": \"User not found\",\n        \"detail\": \"User with provided email not found.\"\n    }\n}",
+                                "latency": 0,
+                                "statusCode": 404,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [
+                                    {
+                                        "target": "body",
+                                        "modifier": "username",
+                                        "value": "test1@test.com",
+                                        "operator": "equals"
+                                    },
+                                    {
+                                        "target": "body",
+                                        "modifier": "password",
+                                        "value": "test123",
+                                        "operator": "equals"
+                                    }
+                                ],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false,
+                                "fallbackTo404": true
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    },
+                    {
+                        "uuid": "c55dcecf-3cfe-449a-a62c-e0890c3ef386",
+                        "documentation": "",
+                        "method": "get",
+                        "endpoint": "v1/city",
+                        "responses": [
+                            {
+                                "uuid": "36b7b3dd-c84b-4d8b-a1be-47817510d1e5",
+                                "body": "{\n    \"data\": {\n        \"cityid\": \"2\",\n        \"name\": \"Stockholm\",\n        \"gps_left_lat\": 123.42,\n        \"gps_left_lon\": 345.678,\n        \"gps_right_lat\": null,\n        \"gps_right_lon\": null\n    }\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false,
+                                "fallbackTo404": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false,
+                        "sequentialResponse": false
+                    }
+                ],
+                "proxyMode": false,
+                "proxyHost": "",
+                "proxyRemovePrefix": false,
+                "tlsOptions": {
+                    "enabled": false,
+                    "type": "CERT",
+                    "pfxPath": "",
+                    "certPath": "",
+                    "keyPath": "",
+                    "caPath": "",
+                    "passphrase": ""
+                },
+                "cors": true,
+                "headers": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "proxyReqHeaders": [
+                    {
+                        "key": "",
+                        "value": ""
+                    }
+                ],
+                "proxyResHeaders": [
+                    {
+                        "key": "",
+                        "value": ""
+                    }
+                ]
+            }
+        }
+    ]
+}

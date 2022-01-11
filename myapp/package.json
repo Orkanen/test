@@ -5,8 +5,9 @@
   "scripts": {
     "start": "node ./bin/www",
     "test": "mocha --timeout 10000",
+    "mock": "mockoon-cli start --data Mockoon-api.json",
     "eslint": "eslint .",
-        "scrutinizer-test": "nyc --reporter=html --reporter=text --reporter=clover mocha --exit --timeout 10000"
+    "scrutinizer-test": "npm run mock & nyc --reporter=html --reporter=text --reporter=clover mocha --exit --timeout 10000 && mockoon-cli stop mockoon-grupp7"
   },
   "dependencies": {
     "axios": "^0.24.0",
@@ -26,6 +27,7 @@
     "request": "^2.88.2"
   },
   "devDependencies": {
+    "@mockoon/cli": "^1.5.0",    
     "chai": "^4.3.4",
     "mocha": "^9.1.3",
     "nyc": "^15.1.0",
