@@ -2,6 +2,12 @@ checks:
     javascript: true
 build:
   nodes:
+    some-node:
+      dependencies:
+        before:
+          - npm ci
+          - npm install -g @mockoon/cli
+
     coverage:
       tests:
         override:
