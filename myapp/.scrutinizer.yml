@@ -12,8 +12,3 @@ build:
               # These formats are supported:
               # clover, cobertura, jacoco, python-cc, ruby-cc, go-cc, lcov
               format: clover
-          - js-scrutinizer-run
-
-filter:
-    excluded_paths:
-        - test/*
