@@ -5,8 +5,7 @@ build:
     some-node:
       dependencies:
         before:
-          - npm ci
-          - npm install -g @mockoon/cli
+          - npm install @mockoon/cli
 
     coverage:
       tests:
