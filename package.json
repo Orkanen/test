@@ -8,7 +8,7 @@
     "mock": "mockoon-cli start --data Mockoon-api.json --port 1337",
     "eslint": "eslint .",
     "github-test": "nyc --reporter=html --reporter=text --reporter=clover mocha --exit --timeout 10000 && mockoon-cli stop mockoon-grupp7",
-    "scrutinizer-test": "nyc --reporter=html --reporter=text --reporter=clover mocha --exit --timeout 10000"
+    "scrutinizer-test": "npm run mock && nyc --reporter=html --reporter=text-summary --reporter=clover mocha --exit --timeout 10000 && mockoon-cli stop mockoon-grupp7"
   },
   "dependencies": {
     "axios": "^0.24.0",

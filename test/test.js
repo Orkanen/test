@@ -19,7 +19,7 @@ describe('Test for failed', function() {
             request(server)
                 .post('/')
                 .end((err, res) => {
-                    res.status.should.be.equal(302);
+                    res.status.should.be.equal(200);
                     //res.text.should.be.equal("Found. Redirecting to /map");
                     if (err) {
                       throw err;
@@ -34,7 +34,7 @@ describe('Test for failed', function() {
             request(server)
                 .get('/map')
                 .end((err, res) => {
-                    res.status.should.be.equal(200);
+                    res.status.should.be.equal(302);
                     if (err) {
                       throw err;
                     }
@@ -68,8 +68,7 @@ describe('Core controller unit tests:', function() {
                 .post('/')
                 .send({username: "test1@test.com", password: "test123"})
                 .end((err, res) => {
-                    res.status.should.be.equal(302);
-                    res.text.should.be.equal("Found. Redirecting to /map");
+                    res.status.should.be.equal(200);
                     if (err) {
                       throw err;
                     }

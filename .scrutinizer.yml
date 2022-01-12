@@ -2,15 +2,10 @@ checks:
     javascript: true
 build:
     nodes:
-        some-node:
-            dependencies:
-                before:
-                    - npm run mock
-
         coverage:
             tests:
                 override:
-                    - command: "npm run scrutinizer-test"
+                    - command: "npm run test"
                       coverage:
                           file: coverage/clover.xml
 
