@@ -2,18 +2,18 @@ checks:
     javascript: true
 build:
   nodes:
-    some-node:
-      dependencies:
-        before:
-          - npm run mock
+      some-node:
+          dependencies:
+              before:
+                  - npm run mock
 
     coverage:
-      tests:
-        override:
-          - command: "npm run github-test"
-            coverage:
-              file: coverage/clover.xml
+        tests:
+            override:
+                - command: "npm run github-test"
+                    coverage:
+                        file: coverage/clover.xml
 
-              # These formats are supported:
-              # clover, cobertura, jacoco, python-cc, ruby-cc, go-cc, lcov
-              format: clover
+                        # These formats are supported:
+                        # clover, cobertura, jacoco, python-cc, ruby-cc, go-cc, lcov
+                        format: clover
