@@ -5,12 +5,12 @@ build:
     some-node:
       dependencies:
         before:
-          - npm install @mockoon/cli
+          - npm run mock
 
     coverage:
       tests:
         override:
-          - command: "npm run mock && npm run github-test"
+          - command: "npm run github-test"
             coverage:
               file: coverage/clover.xml
 

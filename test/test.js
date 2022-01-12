@@ -32,14 +32,13 @@ describe('Core controller unit tests:', function() {
         });
     });
 
-    describe('Logging in to the home-page', function() {
-        it('should return 302 from GET /', function(done) {
+    describe('Login wrong password', function() {
+        it('should return 400 from GET /', function(done) {
             request(server)
                 .post('/')
-                .send({username: "test1@test.com", password: "test123"})
+                .send({username: "te@test.com", password: "tes432"})
                 .end((err, res) => {
                     res.status.should.be.equal(302);
-                    res.text.should.be.equal("Found. Redirecting to /map");
                     if (err) {
                       throw err;
                     }
@@ -48,13 +47,14 @@ describe('Core controller unit tests:', function() {
         });
     });
 
-    describe('Login wrong password', function() {
-        it('should return 400 from GET /', function(done) {
+    describe('Logging in to the home-page', function() {
+        it('should return 302 from GET /', function(done) {
             request(server)
                 .post('/')
-                .send({username: "te@test.com", password: "tes432"})
+                .send({username: "test1@test.com", password: "test123"})
                 .end((err, res) => {
                     res.status.should.be.equal(302);
+                    res.text.should.be.equal("Found. Redirecting to /map");
                     if (err) {
                       throw err;
                     }
