@@ -10,7 +10,7 @@ build:
         coverage:
             tests:
                 override:
-                    - command: "npm run github-test"
+                    - command: "npm run scrutinizer-test"
                       coverage:
                           file: coverage/clover.xml
 
