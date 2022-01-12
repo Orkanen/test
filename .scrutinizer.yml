@@ -16,3 +16,4 @@ build:
 filter:
     excluded_paths:
         - node_modules/*
+        - coverage/prettify.js
