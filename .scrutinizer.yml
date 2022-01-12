@@ -1,11 +1,11 @@
 checks:
     javascript: true
 build:
-  nodes:
-      some-node:
-          dependencies:
-              before:
-                  - npm run mock
+    nodes:
+        some-node:
+            dependencies:
+                before:
+                    - npm run mock
 
     coverage:
         tests:
